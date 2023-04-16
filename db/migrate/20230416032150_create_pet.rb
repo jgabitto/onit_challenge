@@ -1,4 +1,4 @@
-class CreatePets < ActiveRecord::Migration[7.0]
+class CreatePet < ActiveRecord::Migration[7.0]
   def change
     create_table :pets do |t|
       t.references :customer, null: false, foreign_key: true
@@ -8,7 +8,7 @@ class CreatePets < ActiveRecord::Migration[7.0]
       t.date :birth_date
       t.text :gender
       t.jsonb :data
-
+      
       t.timestamps
     end
   end
