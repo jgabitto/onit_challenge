@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  dosage: MyText
+  instructions: MyText
+  prescribed_date: 2023-04-16 11:01:59
+  refill_date: 2023-04-16
+
+two:
+  name: MyText
+  dosage: MyText
+  instructions: MyText
+  prescribed_date: 2023-04-16 11:01:59
+  refill_date: 2023-04-16

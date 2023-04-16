@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_154631) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_161302) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointment_prescriptions", force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.bigint "prescription_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_appointment_prescriptions_on_appointment_id"
+    t.index ["prescription_id"], name: "index_appointment_prescriptions_on_prescription_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "pet_id", null: false
@@ -85,12 +94,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_154631) do
     t.index ["species_id"], name: "index_pets_on_species_id"
   end
 
+  create_table "prescriptions", force: :cascade do |t|
+    t.text "name"
+    t.text "dosage"
+    t.text "instructions"
+    t.datetime "prescribed_date"
+    t.date "refill_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "doctor_id", null: false
+    t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
+  end
+
   create_table "species", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "name"
   end
 
+  add_foreign_key "appointment_prescriptions", "appointments"
+  add_foreign_key "appointment_prescriptions", "prescriptions"
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "pets"
   add_foreign_key "bills", "appointments"
@@ -98,4 +121,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_154631) do
   add_foreign_key "customer_pets", "pets"
   add_foreign_key "pets", "breeds"
   add_foreign_key "pets", "species"
+  add_foreign_key "prescriptions", "doctors"
 end
