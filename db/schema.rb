@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_032513) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_044822) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "breeds", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "name"
   end
 
   create_table "customer_pets", force: :cascade do |t|
@@ -41,7 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_032513) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.bigint "customer_id", null: false
     t.text "name"
     t.bigint "species_id", null: false
     t.bigint "breed_id", null: false
@@ -51,18 +51,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_032513) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["breed_id"], name: "index_pets_on_breed_id"
-    t.index ["customer_id"], name: "index_pets_on_customer_id"
     t.index ["species_id"], name: "index_pets_on_species_id"
   end
 
   create_table "species", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "name"
   end
 
   add_foreign_key "customer_pets", "customers"
   add_foreign_key "customer_pets", "pets"
   add_foreign_key "pets", "breeds"
-  add_foreign_key "pets", "customers"
   add_foreign_key "pets", "species"
 end
