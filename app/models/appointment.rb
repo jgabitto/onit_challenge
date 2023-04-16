@@ -5,4 +5,5 @@ class Appointment < ApplicationRecord
     has_one :bill
     has_many :appointment_prescriptions
     has_many :prescriptions, through: :appointment_prescriptions
+    has_many :appointment_services
 end

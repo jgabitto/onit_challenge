@@ -145,3 +145,34 @@ prescriptions = Prescription.create([
     {appointments: [Appointment.find(16)], doctor_id:4,name:"Echinacea (Angustifolia), Adrenalinum, Glandula suprarenalis bovine, Spleen (suis), Carduus marianus, Lycopodium clavatum,",dosage:98,instructions:"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",prescribed_date:"2023-03-26 04:12:21",refill_date:"29/7/2022"},
     {appointments: [Appointment.find(17)], doctor_id:5,name:"articaine hydrochloride and epinephrine bitartrate",dosage:51,instructions:"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",prescribed_date:"2022-11-16 22:54:48",refill_date:"8/12/2022"}
 ])
+
+services = Service.create([
+    {name:"checkup",notes:"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus."},
+    {name:"eye surgery",notes:"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."},
+    {name:"stomach surgery",notes:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus."},
+    {name:"grooming",notes:"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus."},
+    {name:"clean teeth",notes:"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus."}
+])
+
+appointment_services = AppointmentService.create([
+    {appointment_id:1,service_id:1,start_time:"2022-05-17 07:45:03",end_time:"2022-07-21 09:20:14",notes:"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque."},
+    {appointment_id:2,service_id:2,start_time:"2022-11-16 19:51:15",end_time:"2022-08-04 03:22:29",notes:"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero."},
+    {appointment_id:3,service_id:3,start_time:"2022-06-17 06:21:11",end_time:"2023-03-18 02:34:23",notes:"Phasellus in felis. Donec semper sapien a libero. Nam dui."},
+    {appointment_id:4,service_id:4,start_time:"2022-08-13 04:02:19",end_time:"2022-05-18 16:15:05",notes:"Phasellus in felis. Donec semper sapien a libero. Nam dui."},
+    {appointment_id:5,service_id:5,start_time:"2022-08-22 04:46:24",end_time:"2022-09-30 17:14:43",notes:"Sed ante. Vivamus tortor. Duis mattis egestas metus."},
+    {appointment_id:6,service_id:1,start_time:"2022-05-09 07:29:57",end_time:"2023-02-16 06:39:51",notes:"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus."},
+    {appointment_id:7,service_id:2,start_time:"2022-06-06 19:04:33",end_time:"2023-03-26 08:14:39",notes:"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."},
+    {appointment_id:8,service_id:3,start_time:"2022-08-10 02:40:44",end_time:"2023-02-18 08:26:58",notes:"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti."},
+    {appointment_id:9,service_id:4,start_time:"2022-04-17 19:36:11",end_time:"2023-03-02 18:32:31",notes:"Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem."},
+    {appointment_id:10,service_id:5,start_time:"2022-08-27 05:38:25",end_time:"2022-05-13 22:02:33",notes:"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus."},
+    {appointment_id:11,service_id:1,start_time:"2022-05-14 09:32:34",end_time:"2022-11-05 19:02:01",notes:"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus."},
+    {appointment_id:12,service_id:2,start_time:"2022-11-07 18:42:11",end_time:"2022-06-17 10:34:30",notes:"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst."},
+    {appointment_id:13,service_id:3,start_time:"2022-12-27 14:36:27",end_time:"2022-05-27 17:12:08",notes:"In congue. Etiam justo. Etiam pretium iaculis justo."},
+    {appointment_id:14,service_id:4,start_time:"2022-06-30 03:50:30",end_time:"2022-05-19 05:20:10",notes:"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo."},
+    {appointment_id:15,service_id:5,start_time:"2022-04-28 03:58:02",end_time:"2023-01-22 22:56:39",notes:"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."},
+    {appointment_id:16,service_id:1,start_time:"2022-06-28 09:17:36",end_time:"2023-02-01 09:23:38",notes:"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus."},
+    {appointment_id:17,service_id:2,start_time:"2022-09-14 13:48:10",end_time:"2022-06-05 12:40:36",notes:"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem."},
+    {appointment_id:18,service_id:3,start_time:"2022-06-29 19:26:41",end_time:"2022-11-22 07:53:30",notes:"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat."},
+    {appointment_id:19,service_id:4,start_time:"2022-10-06 18:47:54",end_time:"2022-11-06 19:05:35",notes:"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi."},
+    {appointment_id:11,service_id:4,start_time:"2022-10-06 18:47:54",end_time:"2022-11-06 19:05:35",notes:"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi."}
+])

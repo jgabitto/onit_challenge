@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment: one
+  service: one
+  start_time: 2023-04-16 12:06:51
+  end_time: 2023-04-16 12:06:51
+  notes: MyText
+
+two:
+  appointment: two
+  service: two
+  start_time: 2023-04-16 12:06:51
+  end_time: 2023-04-16 12:06:51
+  notes: MyText
