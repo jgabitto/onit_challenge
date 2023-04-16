@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_044822) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_154631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.text "post_summary"
+    t.text "notes"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "doctor_id", null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["pet_id"], name: "index_appointments_on_pet_id"
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.text "status"
+    t.date "due_date"
+    t.datetime "time_generated"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_bills_on_appointment_id"
+  end
 
   create_table "breeds", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -41,6 +65,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_044822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "doctors", force: :cascade do |t|
+    t.text "name"
+    t.text "specialty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pets", force: :cascade do |t|
     t.text "name"
     t.bigint "species_id", null: false
@@ -60,6 +91,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_044822) do
     t.text "name"
   end
 
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "pets"
+  add_foreign_key "bills", "appointments"
   add_foreign_key "customer_pets", "customers"
   add_foreign_key "customer_pets", "pets"
   add_foreign_key "pets", "breeds"
