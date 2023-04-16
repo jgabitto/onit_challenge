@@ -71,7 +71,7 @@ pets = Pet.create([
     {customers: [Customer.find(17)],name:"Curran Duckerin",species_id:2,breed_id:6,birth_date:"30/10/2022",gender:"Male"},
     {customers: [Customer.find(18)],name:"Tibold Folger",species_id:2,breed_id:6,birth_date:"23/7/2022",gender:"Male"},
     {customers: [Customer.find(19)],name:"Arnoldo Golsworthy",species_id:2,breed_id:6,birth_date:"8/5/2022",gender:"Male"},
-    {customers: [Customer.find(20)],name:"Lanie Chapellow",species_id:2,breed_id:6,birth_date:"13/9/2022",gender:"Female"}
+    {customers: [Customer.find(20)],name:"Lanie Chapellow",species_id:2,breed_id:6,birth_date:"13/9/2022",gender:"Female", data: {"eye_color": "blue"}}
 ])
 
 doctors = Doctor.create([
@@ -147,11 +147,11 @@ prescriptions = Prescription.create([
 ])
 
 services = Service.create([
-    {name:"checkup",notes:"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus."},
-    {name:"eye surgery",notes:"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."},
-    {name:"stomach surgery",notes:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus."},
-    {name:"grooming",notes:"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus."},
-    {name:"clean teeth",notes:"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus."}
+    {name:"checkup",notes:"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.", cost: 500.0},
+    {name:"eye surgery",notes:"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", cost: 50.0},
+    {name:"stomach surgery",notes:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.", cost: 200.0},
+    {name:"grooming",notes:"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.", cost: 230.0},
+    {name:"clean teeth",notes:"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.", cost: 150.0}
 ])
 
 appointment_services = AppointmentService.create([
