@@ -6,4 +6,5 @@ class Appointment < ApplicationRecord
     has_many :appointment_prescriptions
     has_many :prescriptions, through: :appointment_prescriptions
     has_many :appointment_services
+    has_many :services, through: :appointment_services
 end
