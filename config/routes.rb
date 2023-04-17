@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   post 'pets', to: 'pets#create'
   delete 'pets/:id', to: "pets#destroy"
 
+  # Appointment routes
+  get 'appointments', to: 'appointments#index'
+  get 'appointments/:id', to: 'appointments#show'
+  post 'appointments', to: 'appointments#create'
+  delete 'appointments/:id', to: "appointments#destroy"
+
 end
