@@ -1,10 +1,15 @@
-name: Docker Image CI
+# name: Docker Image CI
 
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+name: Build a docker image and push it to AWS ECR
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  release:
+    types: [published]
 
 jobs:
 
@@ -27,12 +32,17 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+        
+      - name: Extract tag
+        shell: bash
+        run: echo "##[set-output name=release_tag;]$(echo ${GITHUB_REF#refs/tags/})"
+        id: extract_tag
 
       - name: Build, tag, and push image to amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: github-actions
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: ${{ steps.extract_tag.outputs.release_tag }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
