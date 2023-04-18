@@ -1,30 +1,67 @@
-version: '3.8'
+# version: '3.8'
 
+# services:
+#     web:
+#         build: .
+#         image: rails-docker
+#         restart: "no"
+#         # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+#         environment:
+#             - DBHOST=postgresql
+#             - DBUSER=postgres
+#             - DBPASS=margab
+#         ports:
+#             - 3000:3000
+#         depends_on:
+#             - postgresql
+
+#     postgresql:
+#         image: postgres
+#         restart: "no"
+#         ports:
+#             - 5432:5432
+#         environment:
+#             POSTGRES_DB: docker_rails_development
+#             POSTGRES_USER: postgres
+#             POSTGRES_PASSWORD: margab
+#         volumes:
+#             - postgresdb:/var/lib/postgresql/data/
+
+# volumes:
+#     postgresdb:
+
+version: '3.8'
 services:
+    db:
+        image: postgres:14.2-alpine
+        container_name: demo-postgres-14.2
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        command:
+            "postgres -c 'max_connections=500'"
+        environment:
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        ports:
+            - "5432:5432"
     web:
         build: .
-        image: rails-docker
-        restart: "no"
+        command: "./bin/rails server"
         environment:
-            - DBHOST=postgresql
-            - DBUSER=postgres
-            - DBPASS=margab
-        ports:
-            - 3000:3000
-        depends_on:
-            - postgresql
-
-    postgresql:
-        image: postgres
-        restart: "no"
-        ports:
-            - 5432:5432
-        environment:
-            POSTGRES_DB: docker_rails_development
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: margab
+            - RAILS_ENV=${RAILS_ENV}
+            - POSTGRES_HOST=${POSTGRES_HOST}
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
         volumes:
-            - postgresdb:/var/lib/postgresql/data/
-
+            - app-storage:/rails/storage
+        depends_on:
+            - db
+        ports:
+            - "3000:3000"
+      
 volumes:
-    postgresdb:
+    postgres_data: {}
+    app-storage: {}

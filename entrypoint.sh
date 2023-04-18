@@ -7,4 +7,5 @@ if [ -f tmp/pids/server.pid ]; then
 fi
 
 # bundle install
-exec "$@"
+# exec "$@"
+bundle exec rails s -b 0.0.0.0
